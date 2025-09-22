@@ -1,0 +1,125 @@
+:root {
+    --primary: #2c3e50;
+    --secondary: #8a4bff;
+    --accent: #e74c3c;
+    --light: #ecf0f1;
+    --dark: #2c3e50;
+    --success: #27ae60;
+    --warning: #f39c12;
+}
+        
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f8f9fa;
+    color: #333;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+        
+.navbar {
+    background-color: var(--primary);
+}
+        
+.navbar-brand {
+    font-weight: 700;
+}
+        
+.hero-section {
+    background: linear-gradient(rgba(44, 62, 80, 0.8), rgba(44, 62, 80, 0.8)), url('https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1932&q=80');
+    background-size: cover;
+    background-position: center;
+    color: white;
+    padding: 100px 0;
+    text-align: center;
+}
+        
+.module-card {
+    border: none;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    height: 100%;
+}
+        
+.module-card:hover {
+    transform: translateY(-5px);
+}
+        
+.module-icon {
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+    color: var(--secondary);
+}
+        
+.login-container {
+    max-width: 400px;
+    margin: 100px auto;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    background-color: white;
+}
+        
+.dashboard-card {
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    height: 100%;
+}
+        
+.dashboard-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+        
+.symptom-checkbox {
+    margin: 8px 0;
+}
+        
+.diagnosis-result {
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+        
+.dashboard-container {
+    display: block;
+}
+        
+.user-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 10px;
+}
+        
+.prescription-box {
+    border: 1px dashed #ccc;
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+        
+@media (max-width: 768px) {
+    .hero-section {
+        padding: 60px 0;
+    }
+    .module-card {
+        margin-bottom: 20px;
+    }
+}
+
+footer {
+    background-color: var(--dark);
+    color: white;
+    padding: 30px 0;
+    margin-top: auto;
+}
