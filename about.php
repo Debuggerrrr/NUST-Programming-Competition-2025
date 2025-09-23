@@ -1,17 +1,5 @@
 <?php
-session_start();
-require_once __DIR__ . '/utils/auth.php';
-$login_error = '';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['password'])) {
-    require_once 'api/auth/login.php';
-    if (isset($_SESSION['user_id'])) {
-        header('Location: dashboard.php');
-        exit();
-    } else {
-        $login_error = 'Invalid username or password.';
-    }
-}
+// about.php - About page for Medical Expert System
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - MESMTF Medical Expert System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -29,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
         <div class="container">
             <a class="navbar-brand" href="index.php">
                 <div class="logo-placeholder">
-                    <img src="\Programming-Competition-2025\images\Logo.jpeg" alt="MESMTF Logo" class="nav-logo">
+                    <img src="images/Logo.jpeg" alt="MESMTF Logo" class="nav-logo">
                 </div>
                 MESMTF
             </a>
@@ -48,22 +35,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                         <a class="nav-link" href="services.php">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="diagnosis.php">Diagnosis</a>
                     </li>
-                    <?php if (Auth::isLoggedIn()): ?>
-                        <li class="nav-item">
-                            <a class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'dashboard.php' ?>" href="dashboard.php">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="api/auth/logout.php">
-                                <i class="fas fa-sign-out-alt me-1"></i> Logout
-                            </a>
-                        </li>
-                    <?php else: ?>
-                        <li class="nav-item">
-                            <a class="nav-link" href="api/auth/login.php">Login</a>
-                        </li>
-                    <?php endif; ?>
                 </ul>
             </div>
         </div>
@@ -93,8 +65,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                 </div>
                 <div class="col-lg-6">
                     <div class="about-image">
-                        <img src="\Programming-Competition-2025\images\pic1.jpg" class="img-fluid rounded">
-                        <div class="\Programming-Competition-2025\images\pic1.jpg"></div>
+                        <img src="images/pic1.jpg" class="img-fluid rounded">
                     </div>
                 </div>
             </div>
@@ -143,8 +114,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                         <div class="row align-items-center">
                             <div class="col-md-3">
                                 <div class="leader-image">
-                                    <img src="\Programming-Competition-2025\images\pic2.jpg" alt="Dr. Esperance Luvindao" class="img-fluid rounded-circle">
-                                    <div class="\Programming-Competition-2025\images\pic2.jpg">Add Minister's Photo</div>
+                                    <img src="images\pic2.jpg" alt="Dr. Esperance Luvindao" class="img-fluid rounded-circle">
+                                    <!-- Minister's Photo -->
                                 </div>
                             </div>
                             <div class="col-md-9">
@@ -166,8 +137,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                 <div class="col-md-4 mb-4">
                     <div class="doctor-card text-center">
                         <div class="doctor-image mb-3">
-                            <img src="\Programming-Competition-2025\images\pic3.jpg" alt="Dr. Izona Bock" class="img-fluid rounded-circle">
-                            <div class="\Programming-Competition-2025\images\pic3.jpg">Add Dr. Bock's Photo</div>
+                            <img src="images\pic3.jpg" alt="Dr. Izona Bock" class="img-fluid rounded-circle">
+                            <!-- Dr. Bock's Photo -->
                         </div>
                         <h5>Dr. Izona Bock</h5>
                         <p class="specialty">Infectious Disease Specialist</p>
@@ -178,8 +149,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                 <div class="col-md-4 mb-4">
                     <div class="doctor-card text-center">
                         <div class="doctor-image mb-3">
-                            <img src="\Programming-Competition-2025\images\pic4.jpeg" alt="Mr. Penda Ithindi" class="img-fluid rounded-circle">
-                            <div class="\Programming-Competition-2025\images\pic4.jpeg">Add Mr. Ithindi's Photo</div>
+                            <img src="images\pic4.jpeg" alt="Mr. Penda Ithindi" class="img-fluid rounded-circle">
+                            <!-- Mr. Ithindi's Photo -->
                         </div>
                         <h5>Mr. Penda Ithindi</h5>
                         <p class="specialty">Public Health Director</p>
@@ -190,8 +161,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                 <div class="col-md-4 mb-4">
                     <div class="doctor-card text-center">
                         <div class="doctor-image mb-3">
-                            <img src="\Programming-Competition-2025\images\pic5.webp" alt="Mr. Erwin Nakafingo" class="img-fluid rounded-circle">
-                            <div class="\Programming-Competition-2025\images\pic5.webp">Add Mr. Nakafingo's Photo</div>
+                            <img src="images\pic5.webp" alt="Mr. Erwin Nakafingo" class="img-fluid rounded-circle">
+                            <!-- Mr. Nakafingo's Photo -->
                         </div>
                         <h5>Mr. Erwin Nakafingo</h5>
                         <p class="specialty">Medical Research Director</p>
@@ -230,7 +201,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                     <div class="footer-logo">
                         <div class="logo-placeholder">
     <!-- logo Section -->
-                            <img src="\Programming-Competition-2025\images\Logo.jpeg" alt="MESMTF Logo" class="footer-logo-img">
+                            <img src="images/Logo.jpeg" alt="MESMTF Logo" class="footer-logo-img">
                         </div>
                         <div>
                             <h5 class="footer-heading">MESMTF System</h5>
@@ -244,7 +215,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                         <li><a href="index.php" class="footer-link">Home</a></li>
                         <li><a href="about.php" class="footer-link">About</a></li>
                         <li><a href="services.php" class="footer-link">Services</a></li>
-                        <li><a href="diagnosis.php" class="footer-link">Diagnosis</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">

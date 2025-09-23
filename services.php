@@ -1,17 +1,5 @@
 <?php
-session_start();
-require_once __DIR__ . '/utils/auth.php';
-$login_error = '';
-
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['password'])) {
-    require_once 'api/auth/login.php';
-    if (isset($_SESSION['user_id'])) {
-        header('Location: dashboard.php');
-        exit();
-    } else {
-        $login_error = 'Invalid username or password.';
-    }
-}
+// services.php - Services page
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +8,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Our Services - MESMTF Medical Expert System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -29,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
         <div class="container">
             <a class="navbar-brand" href="index.php">
                 <div class="logo-placeholder">
-                    <img src="\Programming-Competition-2025\images\Logo.jpeg" alt="MESMTF Logo" class="nav-logo">
+                    <img src="images\Logo.jpeg" alt="MESMTF Logo" class="nav-logo">
                 </div>
                 MESMTF
             </a>
@@ -41,21 +28,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                     <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
                     <li class="nav-item"><a class="nav-link active" href="services.php">Services</a></li>
-                    <li class="nav-item"><a class="nav-link" href="diagnosis.php">Diagnosis</a></li>
-                    <?php if (Auth::isLoggedIn()): ?>
-    <li class="nav-item">
-        <a class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'dashboard.php' ?>" href="dashboard.php">Dashboard</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="api/auth/logout.php">
-            <i class="fas fa-sign-out-alt me-1"></i> Logout
-        </a>
-    </li>
-<?php else: ?>
-    <li class="nav-item">
-        <a class="nav-link" href="api/auth/login.php">Login</a>
-    </li>
-<?php endif; ?>
+                        <!-- Login button removed -->
+                </ul>
             </div>
         </div>
     </nav>
@@ -71,7 +45,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
             </div>
         </div>
     </section>
-    
+
     <!-- Services Content -->
     <section class="py-5">
         <div class="container">
@@ -80,12 +54,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                 <!-- Medical Records -->
                 <div class="col-lg-6">
                     <div class="service-card">
-                        <div class="service-icon">
-                            <img src="/Programming-Competition-2025/images/icon1.png" alt="Medical Records Icon" class="service-icon-img">
-                            <div class="icon-placeholder">Icon</div>
-                        </div>
+                        <div class="service-icon">📊</div>
                         <h3>Medical Records Management</h3>
-                        <p>Secure electronic system for storing and managing patient health information with easy access for healthcare providers.</p>
+                        <p>Secure electronic health records system for comprehensive patient information storage and management.</p>
                         <div class="service-info">
                             <strong>Reports Generated:</strong>
                             <span>Medical history summaries, treatment timelines, patient summaries</span>
@@ -96,12 +67,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                 <!-- AI Diagnosis -->
                 <div class="col-lg-6">
                     <div class="service-card">
-                        <div class="service-icon">
-                            <img src="/Programming-Competition-2025/images/icon2.png" alt="AI Diagnosis Icon" class="service-icon-img">
-                            <div class="icon-placeholder">Icon</div>
-                        </div>
+                        <div class="service-icon">🤖</div>
                         <h3>AI-Powered Diagnosis</h3>
-                        <p>Advanced system that analyzes symptoms to provide accurate preliminary diagnosis for malaria and typhoid fever.</p>
+                        <p>Advanced rule-based expert system for accurate preliminary diagnosis of Malaria and Typhoid Fever.</p>
                         <div class="service-info">
                             <strong>Reports Generated:</strong>
                             <span>Symptom analysis, diagnostic assessments, risk scores</span>
@@ -112,12 +80,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                 <!-- Pharmacy Services -->
                 <div class="col-lg-6">
                     <div class="service-card">
-                        <div class="service-icon">
-                            <img src="/Programming-Competition-2025/images/icon3.png" alt="Pharmacy Icon" class="service-icon-img">
-                            <div class="icon-placeholder">Icon</div>
-                        </div>
+                        <div class="service-icon">💊</div>
                         <h3>Pharmacy & Medication Management</h3>
-                        <p>Electronic prescription system with drug interaction checks and medication tracking for better patient care.</p>
+                        <p>Complete electronic prescription system with drug interaction checks and medication tracking.</p>
                         <div class="service-info">
                             <strong>Reports Generated:</strong>
                             <span>Prescription summaries, adherence tracking, drug interactions</span>
@@ -128,12 +93,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                 <!-- Comprehensive Reporting -->
                 <div class="col-lg-6">
                     <div class="service-card">
-                        <div class="service-icon">
-                            <img src="/Programming-Competition-2025/images/icon4.png" alt="Reporting Icon" class="service-icon-img">
-                            <div class="icon-placeholder">Icon</div>
-                        </div>
+                        <div class="service-icon">📈</div>
                         <h3>Comprehensive Reporting</h3>
-                        <p>Detailed analytics and reporting tools to track treatment outcomes and monitor patient progress effectively.</p>
+                        <p>Detailed analytics and reporting system for treatment outcomes and progress tracking.</p>
                         <div class="service-info">
                             <strong>Reports Generated:</strong>
                             <span>Treatment analysis, progress tracking, epidemiological studies</span>
@@ -152,7 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                 <div class="col-lg-8 mx-auto text-center">
                     <h4>Ready to Get Started?</h4>
                     <p class="mb-3">Join healthcare professionals using our medical expert system</p>
-                    <a href="diagnosis.php" class="btn btn-primary">Start Diagnosis</a>
                     <a href="about.php" class="btn btn-outline-primary">Learn More</a>
                 </div>
             </div>
@@ -167,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                     <div class="footer-logo">
                         <div class="logo-placeholder">
     <!-- logo Section -->
-                            <img src="\Programming-Competition-2025\images\Logo.jpeg" alt="MESMTF Logo" class="footer-logo-img">
+                            <img src="images\Logo.jpeg" alt="MESMTF Logo" class="footer-logo-img">
                         </div>
                         <div>
                             <h5 class="footer-heading">MESMTF System</h5>
@@ -181,7 +142,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                         <li><a href="index.php" class="footer-link">Home</a></li>
                         <li><a href="about.php" class="footer-link">About</a></li>
                         <li><a href="services.php" class="footer-link">Services</a></li>
-                        <li><a href="diagnosis.php" class="footer-link">Diagnosis</a></li>
                     </ul>
                 </div>
                 <div class="col-lg-3 col-md-6 mb-4">
