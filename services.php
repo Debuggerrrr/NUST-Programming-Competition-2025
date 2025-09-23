@@ -46,7 +46,7 @@
             </div>
         </div>
     </section>
-
+    
     <!-- Services Content -->
     <section class="py-5">
         <div class="container">
@@ -55,9 +55,12 @@
                 <!-- Medical Records -->
                 <div class="col-lg-6">
                     <div class="service-card">
-                        <div class="service-icon">📊</div>
+                        <div class="service-icon">
+                            <img src="/Programming-Competition-2025/images/icon1.png" alt="Medical Records Icon" class="service-icon-img">
+                            <div class="icon-placeholder">Icon</div>
+                        </div>
                         <h3>Medical Records Management</h3>
-                        <p>Secure electronic health records system for comprehensive patient information storage and management.</p>
+                        <p>Secure electronic system for storing and managing patient health information with easy access for healthcare providers.</p>
                         <div class="service-info">
                             <strong>Reports Generated:</strong>
                             <span>Medical history summaries, treatment timelines, patient summaries</span>
@@ -68,9 +71,12 @@
                 <!-- AI Diagnosis -->
                 <div class="col-lg-6">
                     <div class="service-card">
-                        <div class="service-icon">🤖</div>
+                        <div class="service-icon">
+                            <img src="/Programming-Competition-2025/images/icon2.png" alt="AI Diagnosis Icon" class="service-icon-img">
+                            <div class="icon-placeholder">Icon</div>
+                        </div>
                         <h3>AI-Powered Diagnosis</h3>
-                        <p>Advanced rule-based expert system for accurate preliminary diagnosis of Malaria and Typhoid Fever.</p>
+                        <p>Advanced system that analyzes symptoms to provide accurate preliminary diagnosis for malaria and typhoid fever.</p>
                         <div class="service-info">
                             <strong>Reports Generated:</strong>
                             <span>Symptom analysis, diagnostic assessments, risk scores</span>
@@ -81,9 +87,12 @@
                 <!-- Pharmacy Services -->
                 <div class="col-lg-6">
                     <div class="service-card">
-                        <div class="service-icon">💊</div>
+                        <div class="service-icon">
+                            <img src="/Programming-Competition-2025/images/icon3.png" alt="Pharmacy Icon" class="service-icon-img">
+                            <div class="icon-placeholder">Icon</div>
+                        </div>
                         <h3>Pharmacy & Medication Management</h3>
-                        <p>Complete electronic prescription system with drug interaction checks and medication tracking.</p>
+                        <p>Electronic prescription system with drug interaction checks and medication tracking for better patient care.</p>
                         <div class="service-info">
                             <strong>Reports Generated:</strong>
                             <span>Prescription summaries, adherence tracking, drug interactions</span>
@@ -94,9 +103,12 @@
                 <!-- Comprehensive Reporting -->
                 <div class="col-lg-6">
                     <div class="service-card">
-                        <div class="service-icon">📈</div>
+                        <div class="service-icon">
+                            <img src="/Programming-Competition-2025/images/icon4.png" alt="Reporting Icon" class="service-icon-img">
+                            <div class="icon-placeholder">Icon</div>
+                        </div>
                         <h3>Comprehensive Reporting</h3>
-                        <p>Detailed analytics and reporting system for treatment outcomes and progress tracking.</p>
+                        <p>Detailed analytics and reporting tools to track treatment outcomes and monitor patient progress effectively.</p>
                         <div class="service-info">
                             <strong>Reports Generated:</strong>
                             <span>Treatment analysis, progress tracking, epidemiological studies</span>
