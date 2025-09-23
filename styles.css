@@ -79,10 +79,13 @@ body::before {
 }
 
 .nav-link:hover, .nav-link.active {
-    background-color: rgba(255, 255, 255, 0.1);
+    background-color: rgba(212, 11, 11, 0.1);
     color: white !important;
 }
-
+.nav-done{
+    color: rgb(0, 0, 59);
+    font-size: 25px;
+}
 /* ===== HOME PAGE STYLES ===== */
 
 /* Hero Section */
@@ -156,6 +159,7 @@ body::before {
     color: var(--primary);
     transform: translateY(-2px);
 }
+
 
 /* Features Section */
 .features-section {

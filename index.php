@@ -1,5 +1,6 @@
 <?php
 session_start();
+require_once __DIR__ . '/utils/auth.php';
 $login_error = '';
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['password'])) {
@@ -19,10 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MESMTF - Medical Expert System</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation -->
+     
     <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.php">
@@ -50,20 +53,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                         <a class="nav-link" href="diagnosis.php">Diagnosis</a>
                     </li>
                     
-                    <?php if (Auth::isLoggedIn()): ?>
-    <li class="nav-item">
-        <a class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'dashboard.php' ?>" href="dashboard.php">Dashboard</a>
-    </li>
-    <li class="nav-item">
-        <a class="nav-link" href="api/auth/logout.php">
-            <i class="fas fa-sign-out-alt me-1"></i> Logout
-        </a>
-    </li>
-<?php else: ?>
-    <li class="nav-item">
-        <a class="nav-link" href="api/auth/login.php">Login</a>
-    </li>
-<?php endif; ?>
+                        <?php if (Auth::isLoggedIn()): ?>
+                            <li class="nav-item">
+                                <a class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'dashboard.php' ?>" href="dashboard.php">Dashboard</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="api/auth/logout.php">
+                                    <i class="fas fa-sign-out-alt me-1"></i> Logout
+                                </a>
+                            </li>
+                        <?php else: ?>
+                            <li class="nav-item">
+                                <a class="nav-link" href="api/auth/login.php">Login</a>
+                            </li>
+                        <?php endif; ?>
+
                 </ul>
             </div>
         </div>

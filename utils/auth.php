@@ -27,5 +27,13 @@ class Auth {
         session_unset();
         session_destroy();
     }
+
+    // Require a specific role
+    public static function requireRole(array $allowedRoles) {
+        if (!self::isLoggedIn() || !in_array($_SESSION['role'], $allowedRoles)) {
+            header('Location: /api/auth/login.php');
+            exit();
+        }
+    }
 }
 ?>

@@ -1,10 +1,23 @@
 <?php
 session_start();
+require_once __DIR__ . '/utils/auth.php';
+
+// Require login for this page
+Auth::requireLogin();
+
 // Check if user is logged in
 if (!isset($_SESSION['user_id'])) {
     header('Location: index.php');
     exit();
 }
+$role = $_SESSION['role'];
+
+if ($role !== 'admin' && $role !== 'receptionist') {
+    header("Location: index.php");
+    exit();
+}
+
+$username = $_SESSION['username'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,29 +35,61 @@ if (!isset($_SESSION['user_id'])) {
     <title>Medical Expert System Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
     <!-- Navigation Bar -->
-    <nav class="navbar navbar-expand-lg navbar-dark" style="background-color: var(--primary);">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.php">
-                <i class="fas fa-laptop-medical me-2"></i>MESMTF
+                <div class="logo-placeholder">
+                    <!--  logo -->
+                    <img src="\Programming-Competition-2025\images\Logo.jpeg" alt="MESMTF Logo" class="nav-logo">
+                </div>
+                MESMTF
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="index.php">Home</a></li>
-                    <li class="nav-item"><a class="nav-link" href="about.php">About</a></li>
-                    <li class="nav-item"><a class="nav-link" href="services.php">Services</a></li>
-                    <li class="nav-item"><a class="nav-link active" href="dashboard.php">Dashboard</a></li>
-                    <li class="nav-item"><a class="nav-link" href="api/auth/login.php?action=logout">Logout</a></li>
-                </ul>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="about.php">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="services.php">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="diagnosis.php">Diagnosis</a>
+                    </li>
+
+                    <?php if (Auth::isLoggedIn()): ?>
+                        <li class="nav-item">
+                            <a class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'dashboard.php' ? 'active' : '' ?>" href="dashboard.php">Dashboard</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="api/auth/logout.php">
+                                <i class="fas fa-sign-out-alt me-1"></i> Logout
+                            </a>
+                        </li>
+                    <?php else: ?>
+                        <li class="nav-item">
+                            <a class="nav-link" href="api/auth/login.php">Login</a>
+                        </li>
+                    <?php endif; ?>
+                    </ul>
+                 </div>
             </div>
-        </div>
-    </nav>
+        </nav>
     <!-- Dashboard Container -->
+     <li class="nav-item">
+   <span class="nav-done">
+      Welcome back, <strong><?= htmlspecialchars($username) ?></strong>
+   </span>
+</li>
     <div class="dashboard-container container-fluid py-4" id="dashboardContainer">
         <div class="row">
             <div class="col-md-3">
@@ -597,6 +642,8 @@ if (!isset($_SESSION['user_id'])) {
             </div>
         </div>
     </div>
+
+    
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <script>
 // Tab switching logic for dashboard

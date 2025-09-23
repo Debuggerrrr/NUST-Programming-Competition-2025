@@ -7,20 +7,27 @@ $error = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['password'])) {
     $username = trim($_POST['username']);
     $password = $_POST['password'];
-    $role = isset($_POST['role']) ? $_POST['role'] : '';
+    $roleFromForm = isset($_POST['role']) ? $_POST['role'] : '';
 
     $user = new User();
     if ($user->getByUsername($username) && $user->verifyPassword($password)) {
-        $_SESSION['user_id'] = $user->id;
-        $_SESSION['username'] = $user->username;
-        $_SESSION['role'] = $user->role;
-        header('Location: ../../dashboard.php');
-        exit();
+        // Check if the role selected matches the role in DB
+        if ($roleFromForm === $user->role) {
+           $_SESSION['user_id'] = $user->id;
+            $_SESSION['username'] = $user->username;
+            $_SESSION['role'] = $user->role;
+
+            header('Location: ../../dashboard.php');
+            exit();
+        } else {
+            $error = "Invalid role selected for this user.";
+        }
     } else {
         $error = 'Invalid username or password.';
     }
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <body>
