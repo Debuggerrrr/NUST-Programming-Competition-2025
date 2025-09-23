@@ -375,9 +375,37 @@ body::before {
 }
 
 .service-icon {
-    font-size: 2.5rem;
     margin-bottom: 15px;
     text-align: center;
+    position: relative;
+}
+
+/* Add this for the actual icon images */
+.service-icon-img {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+}
+
+/* Add this for the placeholder */
+.icon-placeholder {
+    width: 50px;
+    height: 50px;
+    background: #f8f9fa;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6c757d;
+    font-weight: 600;
+    margin: 0 auto;
+    font-size: 0.8rem;
+}
+
+/* Hide placeholder when image loads */
+.service-icon-img[src*="images/"] + .icon-placeholder {
+    display: none;
 }
 
 .service-card h3 {
@@ -412,6 +440,19 @@ body::before {
     line-height: 1.4;
 }
 
+/* Mobile responsive */
+@media (max-width: 768px) {
+    .service-icon-img {
+        width: 10px;
+        height: 10px;
+    }
+    
+    .icon-placeholder {
+        width: 10px;
+        height: 10px;
+        font-size: 0.7rem;
+    }
+}
 /* ===== FOOTER STYLES ===== */
 footer {
     background-color: var(--dark);
