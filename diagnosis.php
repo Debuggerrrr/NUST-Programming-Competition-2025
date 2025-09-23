@@ -15,7 +15,9 @@
     <nav class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
             <a class="navbar-brand" href="index.php">
-                <i class="fas fa-laptop-medical me-2"></i>MESMTF
+                <i class="fas fa-laptop-medical me-2"></i> <div class="logo-placeholder">
+                    <img src="\Programming-Competition-2025\images\Logo.jpeg" alt="MESMTF Logo" class="nav-logo">
+                </div>MESMTF
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -141,39 +143,48 @@
     </section>
 
     <!-- Footer -->
-    <footer>
+        <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>MESMTF</h5>
-                    <p>Medical Expert System for Malaria and Typhoid Fever - A comprehensive e-Health solution for the Ministry of Health and Social Services.</p>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-logo">
+                        <div class="logo-placeholder">
+    <!-- logo Section -->
+                            <img src="\Programming-Competition-2025\images\Logo.jpeg" alt="MESMTF Logo" class="footer-logo-img">
+                        </div>
+                        <div>
+                            <h5 class="footer-heading">MESMTF System</h5>
+                            <p>Medical Expert System for Malaria and Typhoid Fever - A comprehensive e-Health solution.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled">
-                        <li><a href="index.html" class="text-white">Home</a></li>
-                        <li><a href="about.html" class="text-white">About</a></li>
-                        <li><a href="services.html" class="text-white">Services</a></li>
-                        <li><a href="diagnosis.html" class="text-white">Diagnosis</a></li>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.php" class="footer-link">Home</a></li>
+                        <li><a href="about.php" class="footer-link">About</a></li>
+                        <li><a href="services.php" class="footer-link">Services</a></li>
+                        <li><a href="diagnosis.php" class="footer-link">Diagnosis</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <h5>Contact Us</h5>
-                    <address>
-                        <i class="fas fa-map-marker-alt me-2"></i> 13 Jackson Kaijieua Street<br>
-                        Private Bag 1388, Winbrook, NAMIBIA<br>
-                        <i class="fas fa-phone me-2"></i> +264 61 207 2052<br>
-                        <i class="fas fa-envelope me-2"></i> tfse@nust.na
-                    </address>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-heading">Contact Us</h5>
+                    <div class="contact-info">
+                        <p><span class="contact-icon"></span> 13 Jackson Kaijieua Street<br>Private Bag 1388, Winbrook, NAMIBIA</p>
+                        <p><span class="contact-icon"></span> +264 61 207 2052</p>
+                        <p><span class="contact-icon"></span> tfse@nust.na</p>
+                    </div>
                 </div>
+
             </div>
-            <hr class="bg-light">
-            <div class="row">
-                <div class="col-md-6">
-                    <p>&copy; 2025 MESMTF. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-end">
-                    <p>Developed for Ministry of Health and Social Services</p>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2025 MESMTF. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>Developed for Ministry of Health and Social Services</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -181,25 +192,20 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-            // Navigation menu functionality
-            document.addEventListener('DOMContentLoaded', function() {
-                // Get the current page filename
-                const currentPage = location.pathname.split('/').pop();
-                // Remove active class from all nav items
-                document.querySelectorAll('.nav-link').forEach(link => {
-                    ink.classList.remove('active');
-                });
-                // Add active class to the current page's nav item
-                if (currentPage === 'index.html' || currentPage === '') {
-                    document.querySelector('a[href="index.html"]').classList.add('active');
-                } else if (currentPage === 'services.html') {
-                    document.querySelector('a[href="services.html"]').classList.add('active');
-                } else if (currentPage === 'about.html') {
-                    document.querySelector('a[href="about.html"]').classList.add('active');
-                } else if (currentPage === 'diagnosis.html') {
-                    document.querySelector('a[href="diagnosis.html"]').classList.add('active');
+        // JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.padding = '0.5rem 0';
+                    navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+                } else {
+                    navbar.style.padding = '0.8rem 0';
+                    navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
                 }
             });
+        });
     </script>
 </body>
 </html>

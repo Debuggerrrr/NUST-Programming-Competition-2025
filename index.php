@@ -1,16 +1,14 @@
 <?php
 session_start();
-// Handle login form submission
-$error = '';
+$login_error = '';
+
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['password'])) {
-    // Call login.php to validate credentials
     require_once 'api/auth/login.php';
-    // login.php should set $_SESSION['user_id'] on success
     if (isset($_SESSION['user_id'])) {
         header('Location: dashboard.php');
         exit();
     } else {
-        $error = 'Invalid username or password.';
+        $login_error = 'Invalid username or password.';
     }
 }
 ?>
@@ -25,10 +23,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-dark">
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top">
         <div class="container">
             <a class="navbar-brand" href="index.php">
-                <i class="fas fa-laptop-medical me-2"></i>MESMTF
+                <div class="logo-placeholder">
+                    <!--  logo -->
+                    <img src="\Programming-Competition-2025\images\Logo.jpeg" alt="MESMTF Logo" class="nav-logo">
+                </div>
+                MESMTF
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -36,77 +38,142 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link active" href="index.php"><i class="fas fa-home me-1"></i> Home</a>
+                        <a class="nav-link active" href="index.php">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="about.php"><i class="fas fa-info-circle me-1"></i> About</a>
+                        <a class="nav-link" href="about.php">About</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="services.php"><i class="fas fa-stethoscope me-1"></i> Services</a>
+                        <a class="nav-link" href="services.php">Services</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="diagnosis.php"><i class="fas fa-diagnoses me-1"></i> Diagnosis</a>
+                        <a class="nav-link" href="diagnosis.php">Diagnosis</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="api/auth/login.php"><i class="fas fa-sign-in-alt me-1"></i> Login</a>
+                        <a class="nav-link" href="api/auth/login.php">Login</a>
                     </li>
                 </ul>
             </div>
         </div>
     </nav>
 
-    <!-- Public Home Page -->
-    <div id="publicPage">
-        <!-- Hero Section -->
-        <section class="hero-section">
-            <div class="container">
-                <h1 class="display-4 fw-bold mb-4">Medical Expert System for Malaria and Typhoid Fever</h1>
-                <p class="lead mb-4">A comprehensive e-Health solution for the Ministry of Health and Social Services</p>
-                <a href="diagnosis.php" class="btn btn-primary btn-lg me-2"><i class="fas fa-diagnoses me-1"></i> Start Diagnosis</a>
-                <a href="services.php" class="btn btn-outline-light btn-lg"><i class="fas fa-info-circle me-1"></i> Learn More</a>
+    <!-- Hero Section -->
+    <section class="hero-section">
+        <div class="container">
+            <div class="hero-content">
+                <h1 class="hero-title">Medical Expert System for Malaria and Typhoid Fever</h1>
+                <p class="hero-description">A comprehensive e-Health solution for the Ministry of Health and Social Services</p>
+                <div class="hero-buttons">
+                    <a href="diagnosis.php" class="btn btn-hero btn-hero-primary">Start Diagnosis</a>
+                    <a href="services.php" class="btn btn-hero btn-hero-outline">Learn More</a>
+                </div>
             </div>
-        </section>
-    </div>
+        </div>
+    </section>
 
-
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Why Choose Our System</h2>
+                <p>Advanced features designed specifically for healthcare professionals</p>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <span>F</span>
+                        </div>
+                        <h4>Fast Diagnosis</h4>
+                        <p>Quick and accurate identification of malaria and typhoid fever symptoms with our advanced algorithms.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <span>S</span>
+                        </div>
+                        <h4>Secure & Private</h4>
+                        <p>Patient data is protected with enterprise-grade security and strict privacy controls.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <span>D</span>
+                        </div>
+                        <h4>Data Analytics</h4>
+                        <p>Comprehensive reporting and analytics to track disease patterns and treatment outcomes.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
     <!-- Footer -->
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-md-4 mb-4">
-                    <h5>MESMTF</h5>
-                    <p>Medical Expert System for Malaria and Typhoid Fever - A comprehensive e-Health solution for the Ministry of Health and Social Services.</p>
+                <div class="col-lg-4 col-md-6 mb-4">
+                    <div class="footer-logo">
+                        <div class="logo-placeholder">
+    <!-- logo Section -->
+                            <img src="\Programming-Competition-2025\images\Logo.jpeg" alt="MESMTF Logo" class="footer-logo-img">
+                        </div>
+                        <div>
+                            <h5 class="footer-heading">MESMTF System</h5>
+                            <p>Medical Expert System for Malaria and Typhoid Fever - A comprehensive e-Health solution.</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-4 mb-4">
-                    <h5>Quick Links</h5>
-                    <ul class="list-unstyled" >
-                        <li><a href="index.php" class="text-white">Home</a></li>
-                        <li><a href="about.html" class="text-white">About</a></li>
-                        <li><a href="services.html" class="text-white">Services</a></li>
-                        <li><a href="diagnosis.html" class="text-white">Diagnosis</a></li>
+                <div class="col-lg-2 col-md-6 mb-4">
+                    <h5 class="footer-heading">Quick Links</h5>
+                    <ul class="footer-links">
+                        <li><a href="index.php" class="footer-link">Home</a></li>
+                        <li><a href="about.php" class="footer-link">About</a></li>
+                        <li><a href="services.php" class="footer-link">Services</a></li>
+                        <li><a href="diagnosis.php" class="footer-link">Diagnosis</a></li>
                     </ul>
                 </div>
-                <div class="col-md-4">
-                    <h5>Contact Us</h5>
-                    <address>
-                        <i class="fas fa-map-marker-alt me-2"></i> 13 Jackson Kaijieua Street<br>
-                        Private Bag 1388, Winbrook, NAMIBIA<br>
-                        <i class="fas fa-phone me-2"></i> +264 61 207 2052<br>
-                        <i class="fas fa-envelope me-2"></i> tfse@nust.na
-                    </address>
+                <div class="col-lg-3 col-md-6 mb-4">
+                    <h5 class="footer-heading">Contact Us</h5>
+                    <div class="contact-info">
+                        <p><span class="contact-icon"></span> 13 Jackson Kaijieua Street<br>Private Bag 1388, Winbrook, NAMIBIA</p>
+                        <p><span class="contact-icon"></span> +264 61 207 2052</p>
+                        <p><span class="contact-icon"></span> tfse@nust.na</p>
+                    </div>
                 </div>
+
             </div>
-            <hr class="bg-light">
-            <div class="row">
-                <div class="col-md-6">
-                    <p>&copy; 2025 MESMTF. All rights reserved.</p>
-                </div>
-                <div class="col-md-6 text-end">
-                    <p>Developed for Ministry of Health and Social Services</p>
+            <div class="footer-bottom">
+                <div class="row">
+                    <div class="col-md-6">
+                        <p>&copy; 2025 MESMTF. All rights reserved.</p>
+                    </div>
+                    <div class="col-md-6 text-md-end">
+                        <p>Developed for Ministry of Health and Social Services</p>
+                    </div>
                 </div>
             </div>
         </div>
     </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        // JavaScript for interactive elements
+        document.addEventListener('DOMContentLoaded', function() {
+            // Navbar scroll effect
+            window.addEventListener('scroll', function() {
+                const navbar = document.querySelector('.navbar');
+                if (window.scrollY > 50) {
+                    navbar.style.padding = '0.5rem 0';
+                    navbar.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.15)';
+                } else {
+                    navbar.style.padding = '0.8rem 0';
+                    navbar.style.boxShadow = '0 2px 10px rgba(0, 0, 0, 0.1)';
+                }
+            });
+        });
+    </script>
 </body>
 </html>
