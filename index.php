@@ -49,9 +49,21 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['username'], $_POST['p
                     <li class="nav-item">
                         <a class="nav-link" href="diagnosis.php">Diagnosis</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="api/auth/login.php">Login</a>
-                    </li>
+                    
+                    <?php if (Auth::isLoggedIn()): ?>
+    <li class="nav-item">
+        <a class="nav-link <?= basename($_SERVER['PHP_SELF']) == 'dashboard.php' ?>" href="dashboard.php">Dashboard</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link" href="api/auth/logout.php">
+            <i class="fas fa-sign-out-alt me-1"></i> Logout
+        </a>
+    </li>
+<?php else: ?>
+    <li class="nav-item">
+        <a class="nav-link" href="api/auth/login.php">Login</a>
+    </li>
+<?php endif; ?>
                 </ul>
             </div>
         </div>
