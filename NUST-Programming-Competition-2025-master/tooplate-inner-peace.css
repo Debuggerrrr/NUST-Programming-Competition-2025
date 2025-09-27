@@ -1,0 +1,424 @@
+/* Blog Section - Futuristic Timeline Design */
+#practices {
+	background: linear-gradient(135deg, rgba(136, 176, 211, 0.05) 0%, rgba(152, 216, 200, 0.05) 100%);
+	padding: 5rem 5%;
+}
+
+.practices-container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.practice-layout {
+	display: grid;
+	grid-template-columns: 280px 1fr;
+	gap: 3rem;
+	margin-top: 3rem;
+}
+
+/* Futuristic Left Timeline */
+.timeline-track {
+	position: relative;
+	padding: 2rem 0;
+}
+
+.timeline-progress {
+	position: absolute;
+	left: 50%;
+	top: 2rem;
+	bottom: 2rem;
+	width: 2px;
+	background: rgba(107, 91, 149, 0.1);
+	transform: translateX(-50%);
+}
+
+.timeline-progress::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 0;
+	background: var(--gradient-1);
+	animation: fillTimeline 3s ease forwards;
+}
+
+@keyframes fillTimeline {
+	to {
+		height: 100%;
+	}
+}
+
+.timeline-points {
+	position: relative;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+
+.timeline-point {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	position: relative;
+}
+
+.futuristic-label {
+	position: relative;
+	padding: 1rem 2rem;
+	background: white;
+	border-radius: 50px;
+	font-weight: 600;
+	color: var(--dark);
+	transition: all 0.3s ease;
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+	z-index: 5;
+	min-width: 200px;
+	text-align: center;
+}
+
+.futuristic-label::before {
+	content: '';
+	position: absolute;
+	inset: -2px;
+	border-radius: 50px;
+	background: var(--gradient-1);
+	opacity: 0;
+	transition: opacity 0.3s ease;
+	z-index: -1;
+}
+
+.futuristic-label::after {
+	content: '';
+	position: absolute;
+	inset: 0;
+	border-radius: 50px;
+	background: linear-gradient(45deg, transparent 30%, rgba(255, 255, 255, 0.3) 50%, transparent 70%);
+	transform: translateX(-100%);
+	transition: transform 0.6s ease;
+	z-index: -1;
+}
+
+.timeline-point:hover .futuristic-label,
+.timeline-point.active .futuristic-label {
+	animation: zoomPulse 0.6s ease-in-out;
+}
+
+@keyframes zoomPulse {
+	0% {
+		transform: scale(1);
+	}
+
+	50% {
+		transform: scale(1.05);
+	}
+
+	100% {
+		transform: scale(1);
+	}
+}
+
+
+.timeline-point:hover .timeline-indicator,
+.timeline-point.active .timeline-indicator {
+	transform: translateX(-50%) scale(1.3);
+	background: var(--primary);
+	box-shadow: 0 0 15px rgba(45, 90, 135, 0.6);
+}
+
+.label-text {
+	position: relative;
+	z-index: 2;
+	font-size: 1.1rem;
+	letter-spacing: 0.5px;
+}
+
+/* Glowing dot indicator */
+.timeline-indicator {
+	position: absolute;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 12px;
+	height: 12px;
+	background: white;
+	border: 2px solid var(--primary);
+	border-radius: 50%;
+	z-index: 2;
+}
+
+.timeline-point.active .timeline-indicator {
+	background: var(--primary);
+	box-shadow: 0 0 20px rgba(107, 91, 149, 0.5);
+}
+
+/* Right Content Area */
+.practice-content-area {
+	display: grid;
+	gap: 2rem;
+}
+
+.practice-card-new {
+	background: white;
+	padding: 2.5rem;
+	border-radius: 20px;
+	box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+	transition: all 0.3s ease;
+	position: relative;
+	overflow: hidden;
+}
+
+.practice-card-new::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 5px;
+	height: 100%;
+	background: var(--gradient-1);
+}
+
+.practice-card-new:hover {
+	transform: translateX(10px);
+	box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+}
+
+.practice-header {
+	display: flex;
+	align-items: center;
+	gap: 1.5rem;
+	margin-bottom: 1.5rem;
+}
+
+.practice-icon-new {
+	width: 60px;
+	height: 60px;
+	background: var(--gradient-2);
+	border-radius: 15px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 2rem;
+}
+
+.practice-info h3 {
+	font-size: 1.5rem;
+	color: var(--dark);
+	margin-bottom: 0.3rem;
+}
+
+.practice-duration {
+	font-size: 0.9rem;
+	color: var(--primary);
+	font-weight: 500;
+}
+
+.practice-description {
+	color: #666;
+	line-height: 1.8;
+	margin-bottom: 1.5rem;
+}
+
+.practice-benefits {
+	display: flex;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.benefit-tag {
+	padding: 0.5rem 1rem;
+	background: linear-gradient(135deg, rgba(45, 90, 135, 0.1) 0%, rgba(74, 124, 138, 0.1) 100%);
+	border-radius: 20px;
+	font-size: 0.85rem;
+	color: var(--primary);
+	font-weight: 500;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	text-decoration: none;
+	display: inline-block;
+}
+
+.benefit-tag:hover {
+	background: linear-gradient(135deg, #F1E5AC 0%, #4a90e2 100%);
+	color: white;
+	transform: translateY(-2px);
+	box-shadow: 0 5px 15px rgba(74, 144, 226, 0.3);
+}
+
+
+/* Appointments Section - Two Columns */
+#contact {
+	background: linear-gradient(135deg, #11026b 0%, #083b01 100%);
+	padding: 5rem 5%;
+	color: white;
+}
+
+.contact-container {
+	max-width: 1200px;
+	margin: 0 auto;
+}
+
+.contact-container h2 {
+	color: white;
+	margin-bottom: 3rem;
+}
+
+.contact-wrapper {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 3rem;
+	background: rgba(255, 255, 255, 0.95);
+	padding: 3rem;
+	border-radius: 20px;
+	box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info {
+	padding: 2rem;
+}
+
+.contact-info h3 {
+	color: var(--primary);
+	margin-bottom: 2rem;
+	font-size: 1.8rem;
+}
+
+.info-item {
+	display: flex;
+	align-items: center;
+	gap: 1rem;
+	margin-bottom: 1.5rem;
+	color: var(--dark);
+	padding: 1rem;
+	border-radius: 15px;
+	transition: all 0.3s ease;
+	cursor: pointer;
+	position: relative;
+	overflow: hidden;
+}
+
+.info-item::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(45, 90, 135, 0.1), transparent);
+	transition: left 0.5s ease;
+}
+
+.info-item:hover {
+	background: linear-gradient(135deg, rgba(45, 90, 135, 0.05) 0%, rgba(74, 124, 138, 0.05) 100%);
+	transform: translateX(5px);
+	box-shadow: 0 5px 20px rgba(45, 90, 135, 0.1);
+}
+
+.info-item:hover::before {
+	left: 100%;
+}
+
+.info-item:hover .info-icon {
+	transform: scale(1.1) rotate(5deg);
+	box-shadow: 0 8px 25px rgba(45, 90, 135, 0.3);
+}
+
+.info-icon {
+	width: 50px;
+	height: 50px;
+	background: linear-gradient(gray,blue);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 1.3rem;
+	transition: all 0.3s ease;
+	flex-shrink: 0;
+}
+
+.info-text h4 {
+	margin-bottom: 0.25rem;
+	color: rgb(11, 11, 99);
+}
+
+.info-text p {
+	color: #080808;
+	font-size: 0.95rem;
+}
+
+.social-links {
+	display: flex;
+	gap: 1rem;
+	margin-top: 2rem;
+}
+
+.social-link {
+	width: 40px;
+	height: 40px;
+	background: linear-gradient(gray,#0000ff);
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: white;
+	text-decoration: none;
+	transition: transform 0.3s ease;
+}
+
+.social-link:hover {
+	transform: translateY(-3px);
+}
+
+.contact-form {
+	padding: 2rem;
+}
+
+.form-group {
+	margin-bottom: 1.5rem;
+}
+
+.form-group label {
+	display: block;
+	margin-bottom: 0.5rem;
+	color: var(--dark);
+	font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+	width: 100%;
+	padding: 1rem;
+	border: 2px solid #ddd;
+	border-radius: 10px;
+	background: white;
+	transition: all 0.3s ease;
+	font-family: inherit;
+	color: var(--dark);
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+	outline: none;
+	border-color: var(--primary);
+	background: white;
+}
+
+.submit-btn {
+	background: #0000ff;
+	color: white;
+	padding: 1rem 3rem;
+	border: none;
+	border-radius: 50px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	cursor: pointer;
+	transition: all 0.3s ease;
+	width: 100%;
+}
+
+.submit-btn:hover {
+	transform: translateY(-2px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
